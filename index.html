@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d-Briefs — Case Brief Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a04018 0%, #D56C2A 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .landing-container {
+            max-width: 700px;
+            text-align: center;
+            color: white;
+        }
+        
+        .brand-name {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .brand-name span {
+            font-weight: 300;
+        }
+        
+        .brand-tagline {
+            font-size: 20px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+        
+        .wordplay {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .description {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: white;
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .briefly-speaking {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .workflow-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .features {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: left;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .feature p {
+            font-size: 13px;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+        
+        @media (max-width: 600px) {
+            .brand-name {
+                font-size: 40px;
+            }
+            .features {
+                grid-template-columns: 1fr;
+            }
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <h1 class="brand-name">d-BRIEF<span>S</span></h1>
+        <p class="brand-tagline">Case Brief Gallery</p>
+        <p class="wordplay">A place to debrief — review, reflect, and reference your case work</p>
+        
+        <div class="briefly-speaking">
+            <h2 class="section-title">Briefly Speaking</h2>
+            <p class="workflow-text">
+                Every case deserves a good briefer. First, you wrestle with the analysis in the Casebriefr. 
+                Then, you debrief off the record — stepping back to review, reflect, and curate your growing reference library.
+            </p>
+            
+            <div class="button-group">
+                <a href="https://casebriefr.com" class="cta-button">Casebriefr</a>
+                <a href="gallery.html" class="cta-button secondary">The d-Briefs</a>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>Curated</h3>
+                <p>A hand-picked collection of case briefs for study and reference.</p>
+            </div>
+            <div class="feature">
+                <h3>Searchable</h3>
+                <p>Easily find past cases by citation, court, or topic.</p>
+            </div>
+            <div class="feature">
+                <h3>Connected</h3>
+                <p>Seamlessly linked to Casebriefr for creating new briefs.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

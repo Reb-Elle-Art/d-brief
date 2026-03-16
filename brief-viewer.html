@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Brief — d-Briefs</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            border-bottom: 2px solid #D56C2A;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .brand-header {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .brand-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #D56C2A;
+            letter-spacing: 1px;
+        }
+        
+        .brand-name a {
+            color: #D56C2A;
+            text-decoration: none;
+        }
+        
+        .brand-tagline {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #D56C2A;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        
+        .brief-container {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 40px;
+        }
+        
+        .brief-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #D56C2A;
+        }
+        
+        .case-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        .case-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .briefed-by {
+            color: #999;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #D56C2A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        
+        .section-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4a5568;
+            white-space: pre-wrap;
+        }
+        
+        .empty-section {
+            color: #999;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #718096;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            background: white;
+            margin-top: 40px;
+        }
+        
+        footer a {
+            color: #D56C2A;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand-header">
+            <div class="brand-name"><a href="index.html">d-BRIEFS</a></div>
+            <p class="brand-tagline">Case Brief Gallery</p>
+        </div>
+    </header>
+    
+    <main>
+        <a href="gallery.html" class="back-link">← Back to Gallery</a>
+        
+        <div class="brief-container" id="brief-container">
+            <div id="loading">Loading brief...</div>
+        </div>
+    </main>
+    
+    <footer>
+        <p>d-Briefs — A gallery for case brief research</p>
+        <p>Create briefs at <a href="https://reb-elle-art.github.io/casebriefr/">Casebriefr</a></p>
+    </footer>
+    
+    <script>
+        function loadBrief() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const briefId = urlParams.get('id');
+            
+            // Try to get from sessionStorage first (for immediate viewing after submission)
+            let brief = null;
+            const sessionBrief = sessionStorage.getItem('current-brief');
+            if (sessionBrief) {
+                const parsed = JSON.parse(sessionBrief);
+                if (parsed.id === briefId) {
+                    brief = parsed;
+                }
+            }
+            
+            // If not in session, search localStorage submissions
+            if (!brief) {
+                const submissions = JSON.parse(localStorage.getItem('dbrief-submissions') || '[]');
+                brief = submissions.find(b => b.id === briefId);
+            }
+            
+            const container = document.getElementById('brief-container');
+            
+            if (!brief) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <h2>Brief Not Found</h2>
+                        <p>This brief may have been removed or the link is incorrect.</p>
+                        <a href="gallery.html" class="back-link" style="margin-top: 20px;">Return to Gallery</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            const formatDate = (dateStr) => {
+                if (!dateStr) return '';
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            };
+            
+            const renderSection = (title, content) => {
+                if (!content || content.trim() === '') return '';
+                return `
+                    <div class="section">
+                        <div class="section-title">${title}</div>
+                        <div class="section-content">${content}</div>
+                    </div>
+                `;
+            };
+            
+            container.innerHTML = `
+                <div class="brief-header">
+                    <div class="case-name">${brief.caseName}</div>
+                    <div class="case-meta">${brief.citation || ''}</div>
+                    <div class="case-meta">${brief.court || ''}${brief.court && brief.dateDecided ? ' | ' : ''}${formatDate(brief.dateDecided)}</div>
+                    ${brief.judge ? `<div class="case-meta">${brief.judge}</div>` : ''}
+                    <div class="briefed-by">Briefed by: ${brief.briefedBy}</div>
+                </div>
+                
+                ${renderSection('Facts', brief.facts)}
+                ${renderSection('Procedural History', brief.proceduralHistory)}
+                ${renderSection('Issues', brief.issues)}
+                ${renderSection('Holding', brief.holding)}
+                ${renderSection('Rule of Law', brief.rule)}
+                ${renderSection('Reasoning / Rationale', brief.reasoning)}
+                ${renderSection('Concurring Opinion(s)', brief.concurrence)}
+                ${renderSection('Dissenting Opinion(s)', brief.dissent)}
+                ${renderSection('Analysis & Significance', brief.significance)}
+                ${renderSection('Additional Notes', brief.notes)}
+            `;
+        }
+        
+        loadBrief();
+    </script>
+</body>
+</html>

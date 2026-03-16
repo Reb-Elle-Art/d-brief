@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Off the Record — d-Briefs Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header - Matches Casebriefr Template */
+        header {
+            background: white;
+            border-bottom: 2px solid #D56C2A;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .brand-header {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .brand-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #D56C2A;
+            letter-spacing: 1px;
+        }
+        
+        .brand-name a {
+            color: #D56C2A;
+            text-decoration: none;
+        }
+        
+        .brand-tagline {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        /* Main Content */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            color: #D56C2A;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .intro-text {
+            text-align: center;
+            color: #4a5568;
+            font-size: 16px;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .brief-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+        }
+        
+        .brief-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .brief-card .citation {
+            font-weight: 600;
+            color: #D56C2A;
+            font-size: 13px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .brief-card .case-name {
+            font-size: 20px;
+            color: #1a202c;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .brief-card .court {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 15px;
+        }
+        
+        .brief-card .snippet {
+            font-size: 14px;
+            color: #4a5568;
+            line-height: 1.5;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+        }
+        
+        .cta-text {
+            color: #4a5568;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 16px 40px;
+            background: #D56C2A;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+        
+        .cta-button:hover {
+            background: #a04018;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #718096;
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+        
+        footer a {
+            color: #D56C2A;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="brand-header">
+            <div class="brand-name"><a href="index.html">d-BRIEFS</a></div>
+            <p class="brand-tagline">Case Brief Gallery</p>
+        </div>
+    </header>
+    
+    <main>
+        <h1 class="page-title">Off the Record</h1>
+        <p class="page-subtitle">A curated selection from the gallery</p>
+        
+        <p class="intro-text">
+            These briefs represent work-in-progress analyses — the unofficial, working versions 
+            that precede polished final products. Click any brief to view the full analysis.
+        </p>
+        
+        <div class="gallery-grid">
+            <div class="brief-card">
+                <div class="citation">393 Mass. 564 (1984)</div>
+                <div class="case-name">Commonwealth v. Hine</div>
+                <div class="court">Massachusetts Supreme Judicial Court</div>
+                <div class="snippet">Analysis of reasonable doubt instructions and jury deliberation procedures in criminal cases.</div>
+            </div>
+            
+            <div class="brief-card">
+                <div class="citation">5 U.S. (1 Cranch) 137 (1803)</div>
+                <div class="case-name">Marbury v. Madison</div>
+                <div class="court">U.S. Supreme Court</div>
+                <div class="snippet">Landmark case establishing judicial review and the power of federal courts to declare acts of Congress unconstitutional.</div>
+            </div>
+            
+            <div class="brief-card">
+                <div class="citation">404 Mass. 160 (1989)</div>
+                <div class="case-name">Sullivan v. Rooney</div>
+                <div class="court">Massachusetts Supreme Judicial Court</div>
+                <div class="snippet">Medical malpractice case addressing the standard of care and expert testimony requirements.</div>
+            </div>
+            
+            <div class="brief-card">
+                <div class="citation">945 F. Supp. 2d 216 (D. Mass. 2013)</div>
+                <div class="case-name">United States v. Swartz</div>
+                <div class="court">U.S. District Court (D. Mass.)</div>
+                <div class="snippet">Computer fraud case examining the Computer Fraud and Abuse Act and unauthorized access to protected computers.</div>
+            </div>
+            
+            <div class="brief-card">
+                <div class="citation">11 Mass. App. Ct. 959 (1981)</div>
+                <div class="case-name">Roberts v. Healey</div>
+                <div class="court">Massachusetts Appeals Court</div>
+                <div class="snippet">Administrative law case concerning agency authority and the standard of review for administrative decisions.</div>
+            </div>
+            
+            <div class="brief-card">
+                <div class="citation">Record No. 0756-94-3 (Va. Ct. App. 1995)</div>
+                <div class="case-name">Brock v. Commonwealth</div>
+                <div class="court">Court of Appeals of Virginia</div>
+                <div class="snippet">Criminal procedure case addressing sufficiency of evidence and appellate review standards.</div>
+            </div>
+        </div>
+        
+        <!-- Submitted Briefs Section -->
+        <div id="submitted-briefs-section" style="display: none;">
+            <h2 style="text-align: center; color: #D56C2A; margin: 40px 0 20px; font-size: 22px; text-transform: uppercase; letter-spacing: 1px;">Recently Submitted</h2>
+            <div class="gallery-grid" id="submitted-briefs-grid">
+                <!-- Submitted briefs will be inserted here -->
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <p class="cta-text">Ready to create your own case brief?</p>
+            <a href="https://reb-elle-art.github.io/casebriefr/template-v2.html" class="cta-button">Create a Brief</a>
+        </div>
+    </main>
+    
+    <footer>
+        <p>d-Briefs — A gallery for case brief research</p>
+        <p>Create briefs at <a href="https://reb-elle-art.github.io/casebriefr/">Casebriefr</a> · Browse them here</p>
+        <p style="margin-top: 10px; font-size: 12px;">Data provided by the <a href="https://case.law">Caselaw Access Project</a></p>
+    </footer>
+    
+    <script>
+        // Load and display submitted briefs from localStorage
+        function loadSubmittedBriefs() {
+            const submissions = JSON.parse(localStorage.getItem('dbrief-submissions') || '[]');
+            const grid = document.getElementById('submitted-briefs-grid');
+            const section = document.getElementById('submitted-briefs-section');
+            
+            if (submissions.length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+            
+            // Show most recent 6 submissions
+            const recentSubmissions = submissions.slice(-6).reverse();
+            
+            grid.innerHTML = recentSubmissions.map(brief => `
+                <div class="brief-card" onclick="viewBrief('${brief.id}')">
+                    <div class="citation">${brief.citation || 'No citation'}</div>
+                    <div class="case-name">${brief.caseName}</div>
+                    <div class="court">${brief.court || 'Unknown court'}</div>
+                    <div class="snippet">${brief.facts ? brief.facts.substring(0, 150) + '...' : 'No facts provided'}</div>
+                    <div style="margin-top: 10px; font-size: 12px; color: #999;">Briefed by: ${brief.briefedBy}</div>
+                </div>
+            `).join('');
+            
+            section.style.display = 'block';
+        }
+        
+        function viewBrief(id) {
+            const submissions = JSON.parse(localStorage.getItem('dbrief-submissions') || '[]');
+            const brief = submissions.find(b => b.id === id);
+            if (brief) {
+                // Store current brief in sessionStorage for viewing
+                sessionStorage.setItem('current-brief', JSON.stringify(brief));
+                window.open('brief-viewer.html?id=' + id, '_blank');
+            }
+        }
+        
+        // Load submitted briefs on page load
+        loadSubmittedBriefs();
+    </script>
+</body>
+</html>
